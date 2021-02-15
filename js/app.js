@@ -40,7 +40,7 @@ let seattle = {
         }
         const liEl = document.createElement('li');
         ulEl.appendChild(liEl);
-        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`
+        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`;
     }
 };
 
@@ -85,7 +85,7 @@ let tokyo = {
         }
         const liEl = document.createElement('li');
         ulEl.appendChild(liEl);
-        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`
+        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`;
     }
 };
 
@@ -129,7 +129,7 @@ let dubai = {
         }
         const liEl = document.createElement('li');
         ulEl.appendChild(liEl);
-        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`
+        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`;
     }
 };
 
@@ -173,7 +173,7 @@ let paris = {
         }
         const liEl = document.createElement('li');
         ulEl.appendChild(liEl);
-        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`
+        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`;
     }
 };
 
@@ -217,7 +217,7 @@ let lima = {
         }
         const liEl = document.createElement('li');
         ulEl.appendChild(liEl);
-        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`
+        liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`;
     }
 };
 
@@ -264,4 +264,4 @@ function time(index) {
     }
 
     return times[index];
-};
+}
