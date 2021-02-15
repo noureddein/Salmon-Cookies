@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+h1 {
+    font-family: 'Indie Flower', cursive;
+}
+
+section {
+    font-family: 'Anton', sans-serif;
+    float: left;
+    margin: 35px;
+}
