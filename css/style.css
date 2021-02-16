@@ -9,3 +9,29 @@ section {
     float: left;
     margin: 35px;
 }
+.header-page h3 {
+    clear: both;
+    text-align: center;
+}
+.header-page div image{
+    justify-content: center;
+}
+.shape{
+    clear: both;
+    width:100%;
+    margin: 15px 0;
+}
+.shape img{
+    margin: 15px;
+   
+}
+.shape h3 {
+    text-align: center;
+}
+
+.clearFloat{
+    clear: both;
+}
+footer p{
+    font-family: 'Indie Flower', cursive;
+}
