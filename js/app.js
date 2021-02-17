@@ -284,7 +284,7 @@ function Cookies(
     this.customers_h = this.get_Customers_h(this.maxCustomers_h, this.minCustomers_h);
     this.cookiesPurchased_h = this.get_CookiesPurchased_h(this.customers_h, this.avgCookies_Customers);
     this.totalCookiesSold = this.totalOfCookies();
-    this.totalCookiesEach_h =this.get_TotalCookiesEach_h;
+    // this.totalCookiesEach_h = this.get_TotalCookiesEach_h;
 }
 
 Cookies.prototype.get_Customers_h = function () {
@@ -317,9 +317,9 @@ Cookies.prototype.render = function () {
     // h2El.textContent = this.name;
     // const ulEl = document.createElement('ul');
     // container.appendChild(ulEl);
-    for (let x = 0; x < 14; x++) {
-        liEl.textContent = `${time(x)} ${Math.round(this.get_CookiesPurchased_h()[x])} `;
-    }
+    // for (let x = 0; x < 14; x++) {
+    //     liEl.textContent = `${time(x)} ${Math.round(this.get_CookiesPurchased_h()[x])} `;
+    // }
     // const liEl = document.createElement('li');
     // ulEl.appendChild(liEl);
     // liEl.textContent = `Total: ${Math.round(this.totalOfCookies())}`;
@@ -386,10 +386,8 @@ Cookies.prototype.renderBody = function () {
     this.get_Customers_h();
     this.get_CookiesPurchased_h();
     this.totalOfCookies();
-    console.log( this.cookiesPurchased_h);
     const tableRow2 = document.createElement('tr');
     tableEl.appendChild(tableRow2);
-    // const tableData = document.createElement('td');
     for (let j = 0; j < 5; j++) {
         const tableRow2 = document.createElement('tr');
         tableEl.appendChild(tableRow2);
@@ -401,7 +399,7 @@ Cookies.prototype.renderBody = function () {
             const tableData = document.createElement('td');
             tableRow2.appendChild(tableData);
             tableData.textContent = `${Math.round(locations[j].cookiesPurchased_h[i])}`;
-            sum= sum + Math.round(locations[j].cookiesPurchased_h[i]);
+            sum = sum + Math.round(locations[j].cookiesPurchased_h[i]);
         }
         const totalLocation = document.createElement('td');
         tableRow2.appendChild(totalLocation);
@@ -409,40 +407,51 @@ Cookies.prototype.renderBody = function () {
     }
 
     const footerRow = document.createElement('tr');
-    container.appendChild(footerRow);
+    tableEl.appendChild(footerRow);
     const footerTableData = document.createElement('td');
     footerRow.appendChild(footerTableData);
     footerTableData.textContent = 'Hourly Total';
     for (let i = 0; i < 14; i++) {
         const tableData = document.createElement('td');
         footerRow.appendChild(tableData);
-        tableData.textContent = '20';
+        tableData.textContent = `${totalEach_h(i)}`;
     }
     const totalOfLocationsTotals = document.createElement('td');
     footerRow.appendChild(totalOfLocationsTotals);
-    totalOfLocationsTotals.textContent='6700';
+    totalOfLocationsTotals.textContent = `${locationTotal()}`;
 };
 
 
 seattle.renderHeader();
 seattle.renderBody();
-console.log(seattle.cookiesPurchased_h);
-console.log(tokyo.cookiesPurchased_h);
-console.log(dubi.cookiesPurchased_h);
-console.log(paris.cookiesPurchased_h);
-console.log(lima.cookiesPurchased_h);
 
 
-Cookies.prototype.get_TotalCookiesEach_h = function (){
-    let sum = [];
+function totalEach_h(index) {
+    let totalSum = [];
     for (let i = 0; i < 14; i++) {
-        sum.push(this.seattle.cookiesPurchased_h[i] +
-            this.tokyo.cookiesPurchased_h[i]+
-            this.dubi.cookiesPurchased_h[i] +
-            this.paris.cookiesPurchased_h[i] +
-            this.lima.cookiesPurchased_h[i]);
-        return sum;
+        let sum = 0;
+        sum = sum + seattle.cookiesPurchased_h[i] +
+            tokyo.cookiesPurchased_h[i] +
+            dubi.cookiesPurchased_h[i] +
+            paris.cookiesPurchased_h[i] +
+            lima.cookiesPurchased_h[i];
+        totalSum.push(sum);
     }
-    
-};
-console.log(Cookies.totalCookiesEach_h);
+    return totalSum[index];
+}
+
+function locationTotal() {
+    let totalOfAllLocations = [];
+    let sum = 0;
+    totalOfAllLocations.push(seattle.totalCookiesSold);
+    totalOfAllLocations.push(tokyo.totalCookiesSold);
+    totalOfAllLocations.push(dubi.totalCookiesSold);
+    totalOfAllLocations.push(paris.totalCookiesSold);
+    totalOfAllLocations.push(lima.totalCookiesSold);
+    for (let j = 0; j < 5; j++) {
+        sum = sum + totalOfAllLocations[j];
+    }
+    return sum;
+}
+console.log(totalEach_h(13));
+console.log(locationTotal());
