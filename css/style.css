@@ -9,6 +9,7 @@ section {
     float: left;
     margin: 35px;
 }
+
 .header-page h3 {
     clear: both;
     text-align: center;
@@ -34,4 +35,11 @@ section {
 }
 footer p{
     font-family: 'Indie Flower', cursive;
+
+th,tr,td{
+    padding: 10px;
+    margin: 0px;
+    border: 2px solid gray;
+    border-radius: 10px;
+ main
 }
