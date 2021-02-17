@@ -284,7 +284,6 @@ function Cookies(
     this.customers_h = this.get_Customers_h(this.maxCustomers_h, this.minCustomers_h);
     this.cookiesPurchased_h = this.get_CookiesPurchased_h(this.customers_h, this.avgCookies_Customers);
     this.totalCookiesSold = this.totalOfCookies();
-    // this.totalCookiesEach_h = this.get_TotalCookiesEach_h;
 }
 
 Cookies.prototype.get_Customers_h = function () {
@@ -331,7 +330,6 @@ function time() {
         if (i < 12) {
             let eachTime = (i + ' AM');
             times.push(eachTime);
-
         }
     }
     times.push(i + ' PM');
@@ -342,20 +340,8 @@ function time() {
             times.push(eachTime);
         }
     }
-
     return times;
 }
-/* <table id="tableEl">
-        <tr id="tableRow">
-            <th>
-
-            </th>
-        </tr>
-        <tr>
-            <td>
-            </td>
-        </tr>
-    </table> */
 var seattle = new Cookies('Seattle', 23, 65, 6.3);
 var tokyo = new Cookies('Tokyo', 3, 24, 1.2);
 var dubi = new Cookies('Dubi', 11, 38, 3.7);
@@ -383,12 +369,13 @@ Cookies.prototype.renderHeader = function () {
 // Row 2
 
 Cookies.prototype.renderBody = function () {
+
     this.get_Customers_h();
     this.get_CookiesPurchased_h();
     this.totalOfCookies();
     const tableRow2 = document.createElement('tr');
     tableEl.appendChild(tableRow2);
-    for (let j = 0; j < 5; j++) {
+    for (let j = 0; j < locations.length; j++) {
         const tableRow2 = document.createElement('tr');
         tableEl.appendChild(tableRow2);
         const tableData = document.createElement('td');
@@ -430,11 +417,9 @@ function totalEach_h(index) {
     let totalSum = [];
     for (let i = 0; i < 14; i++) {
         let sum = 0;
-        sum = sum + seattle.cookiesPurchased_h[i] +
-            tokyo.cookiesPurchased_h[i] +
-            dubi.cookiesPurchased_h[i] +
-            paris.cookiesPurchased_h[i] +
-            lima.cookiesPurchased_h[i];
+        for (let j = 0; j < locations.length; j++) {
+            sum = sum + locations[j].cookiesPurchased_h[i];
+        }
         totalSum.push(sum);
     }
     return totalSum[index];
@@ -443,15 +428,38 @@ function totalEach_h(index) {
 function locationTotal() {
     let totalOfAllLocations = [];
     let sum = 0;
-    totalOfAllLocations.push(seattle.totalCookiesSold);
-    totalOfAllLocations.push(tokyo.totalCookiesSold);
-    totalOfAllLocations.push(dubi.totalCookiesSold);
-    totalOfAllLocations.push(paris.totalCookiesSold);
-    totalOfAllLocations.push(lima.totalCookiesSold);
-    for (let j = 0; j < 5; j++) {
+    for (let x = 0; x < locations.length; x++) {
+        totalOfAllLocations.push(locations[x].totalCookiesSold);
+    }
+    for (let j = 0; j < locations.length; j++) {
         sum = sum + totalOfAllLocations[j];
     }
     return sum;
 }
-console.log(totalEach_h(13));
-console.log(locationTotal());
+
+const form = document.getElementById('addNewCity');
+form.addEventListener('submit', function (event) {
+    var test = document.querySelector('#seattle');
+    var test1 = test.querySelector('table');
+    test1.innerHTML = '';
+    event.preventDefault();
+    const cityName = event.target.name.value;
+    const min = event.target.minValue.value;
+    const max = event.target.maxValue.value;
+    const avg = event.target.avgValue.value;
+    var userCity = new Cookies(cityName, min, max, avg);
+    // for (let i = 0; i < locations.length; i++) {
+    //     if (cityName.toLocaleLowerCase() === locations[i].toLocaleLowerCase()) {
+    //         alert('Your city match one of the following cities!');
+             // let userAnsr = prompt('Do you want to change \' `${locations[i]}`\' data??');
+    //         break;
+    //     } else {
+    //     }
+    // }
+    locations.push(userCity);
+    console.log(userCity);
+    form.reset();
+    userCity.renderHeader();
+    userCity.renderBody();
+});
+
