@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+body{
+    background-color: #ddd;
+    text-align: center;
+}
 h1 {
     font-family: "Indie Flower", cursive;
 }
 
 section {
     font-family: "Anton", sans-serif;
-    /* float: left; */
     margin: 35px;
+    
+
 }
 .header-page h3 {
     clear: both;
@@ -17,7 +22,6 @@ section {
     justify-content: center;
 }
 .shape {
-    /* clear: both; */
     width: 100%;
     margin: 15px 0;
 }
@@ -30,7 +34,6 @@ section {
 
 
 footer p {
-    /* clear: both; */
     font-family: "Indie Flower", cursive;
 }
 th,
@@ -41,4 +44,29 @@ td {
     border: 2px solid gray;
     border-radius: 10px;
     text-align: center;
+}
+label,legend,input{
+    font-family: "Indie Flower", cursive;
+    font-size: 1.5rem;
+}
+a{
+    font-family: "Indie Flower", cursive;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+th ,tr:last-of-type{
+    background-color: lightblue;
+}
+
+input{
+    border: 2px solid gray;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 10px;
+}
+td:first-of-type , td:last-of-type{
+    background-color: lightcoral;
+}
+tr:last-of-type {
+    background-color: lightblue;
 }
