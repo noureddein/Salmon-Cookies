@@ -271,7 +271,8 @@ const container = document.getElementById('seattle');
 const tableEl = document.createElement('table');
 container.appendChild(tableEl);
 
-function Cookies(
+function Cookies( //function Cookies(){} //A constructor function
+    // let seattle = {} //Object literal notation
     name,
     minCustomers_h,
     maxCustomers_h,
@@ -451,7 +452,7 @@ form.addEventListener('submit', function (event) {
     // for (let i = 0; i < locations.length; i++) {
     //     if (cityName.toLocaleLowerCase() === locations[i].toLocaleLowerCase()) {
     //         alert('Your city match one of the following cities!');
-             // let userAnsr = prompt('Do you want to change \' `${locations[i]}`\' data??');
+    // let userAnsr = prompt('Do you want to change \' `${locations[i]}`\' data??');
     //         break;
     //     } else {
     //     }
