@@ -3,12 +3,12 @@ var img = [];
 var time = 3000; // time in ms
 
 // Image list
-img[0] = '../img/chinook.jpg';
-img[1] = '../img/cutter.jpeg';
-img[2] = '../img/fish.jpg';
-img[3] = '../img/frosted-cookie.jpg';
-img[4] = '../img/salmon.png';
-img[5] = '../img/shirt.jpg';
+img[0] = './img/chinook.jpg';
+img[1] = './img/cutter.jpeg';
+img[2] = './img/fish.jpg';
+img[3] = './img/frosted-cookie.jpg';
+img[4] = './img/salmon.png';
+img[5] = './img/shirt.jpg';
 
 
 
